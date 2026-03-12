@@ -1,0 +1,88 @@
+:root {
+    --color-red: #da3724;
+    --color-blue: #2b3692;
+    --color-green: #80b80c;
+    --color-yellow: #f7aa1c;
+    --color-orange: #ef7512;
+    --color-cream: #fff8e5;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-cream);
+}
+
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--color-red);
+}
+
+section {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.dropdown-container:hover .dropdown-menu {
+    display: block;
+}
+
+.btn-primary {
+    background-color: var(--color-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-red);
+}
+
+.btn-secondary {
+    background-color: var(--color-orange);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-yellow);
+}
+
+/* Navbar scroll effect */
+nav {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+    background-color: var(--color-blue) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+nav.scrolled .nav-link {
+    color: var(--color-cream) !important;
+}
+
+nav.scrolled .nav-link:hover {
+    color: var(--color-yellow) !important;
+}
+
+nav.scrolled #mobile-menu-btn {
+    color: var(--color-cream) !important;
+}
