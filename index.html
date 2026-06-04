@@ -44,6 +44,7 @@
                         <button class="nav-link font-semibold hover:text-yellow-400 transition" style="color: #2b3692;">Evento</button>
                         <div class="dropdown-menu absolute hidden shadow-lg rounded-md mt-2 py-2 w-48" style="background-color: rgba(43, 54, 146, 0.95);">
                             <a href="https://ingressos.python.org.br/nordeste/2026/" target="_blank" class="block px-4 py-2 hover:bg-opacity-80 font-semibold" style="color: #80b80c;">Ingressos</a>
+                            <a href="#locais" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Locais</a>
                             <a href="#cidade" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Cidade</a>
                             <a href="#sobre" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Sobre o Evento</a>
                             <a href="#patrocinadores" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Patrocínio</a>
@@ -62,6 +63,7 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 text-center rounded-lg" style="background-color: rgba(43, 54, 146, 0.95);">
                 <a href="#inicio" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Início</a>
+                <a href="#locais" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Locais</a>
                 <a href="#cidade" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Cidade</a>
                 <a href="#sobre" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Sobre o Evento</a>
                 <a href="#patrocinadores" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Patrocínio</a>
@@ -165,6 +167,96 @@
             </div>
         </div>
     </section>
+
+    <!-- Locais Section -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <section id="locais" class="py-20" style="background-color: #fff8e5;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-4 text-center" style="color: #2b3692;">Locais</h2>
+            <p class="text-center mb-3" style="color: #555;">Local do evento e hotéis com 15% de desconto para participantes</p>
+            <p class="text-center mb-10 text-sm font-semibold" style="color: #ef7512;">Link de desconto dos hotéis disponível em breve</p>
+            <div class="max-w-4xl mx-auto">
+                <div id="locais-map" class="rounded-lg overflow-hidden shadow-lg" style="height: 500px;"></div>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-sm">
+                    <a href="https://maps.app.goo.gl/4VKcmWRzHNbcpKap6" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg font-semibold hover:opacity-80 transition" style="background-color: #2b3692; color: #fff8e5;">
+                        <span style="font-size:1.1em;">📍</span> Estácio Via Corpvs (Evento)
+                    </a>
+                    <a href="https://maps.app.goo.gl/MB8sChLPhvFLjWSV9" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg font-semibold hover:opacity-80 transition" style="background-color: #ef7512; color: #fff8e5;">
+                        <span style="font-size:1.1em;">🏨</span> Ibis Centro de Eventos
+                    </a>
+                    <a href="https://maps.app.goo.gl/tDR6eciuLrcAvfPR6" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg font-semibold hover:opacity-80 transition" style="background-color: #ef7512; color: #fff8e5;">
+                        <span style="font-size:1.1em;">🏨</span> Ibis Praia de Iracema
+                    </a>
+                    <a href="https://maps.app.goo.gl/eM1TagaM2czahgYX8" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg font-semibold hover:opacity-80 transition" style="background-color: #ef7512; color: #fff8e5;">
+                        <span style="font-size:1.1em;">🏨</span> Ibis Budget Iracema
+                    </a>
+                    <a href="https://maps.app.goo.gl/w2a6yaLT3y6AQJQ27" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-lg font-semibold hover:opacity-80 transition" style="background-color: #ef7512; color: #fff8e5;">
+                        <span style="font-size:1.1em;">🏨</span> Mercure Meireles
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        (function () {
+            const map = L.map('locais-map');
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            const eventIcon = L.divIcon({
+                html: '<div style="background:#2b3692;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>',
+                className: '', iconAnchor: [8, 8], popupAnchor: [0, -12]
+            });
+            const hotelIcon = L.divIcon({
+                html: '<div style="background:#ef7512;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>',
+                className: '', iconAnchor: [7, 7], popupAnchor: [0, -10]
+            });
+
+            const places = [
+                {
+                    lat: -3.7642974, lon: -38.4866188,
+                    label: 'Centro Universitário Estácio do Ceará | Via Corpvs',
+                    url: 'https://maps.app.goo.gl/4VKcmWRzHNbcpKap6',
+                    icon: eventIcon
+                },
+                {
+                    lat: -3.7239797, lon: -38.5086837,
+                    label: 'Ibis Fortaleza Praia de Iracema',
+                    url: 'https://maps.app.goo.gl/tDR6eciuLrcAvfPR6',
+                    icon: hotelIcon
+                },
+                {
+                    lat: -3.7232207, lon: -38.5151838,
+                    label: 'Ibis Budget Fortaleza Praia de Iracema',
+                    url: 'https://maps.app.goo.gl/eM1TagaM2czahgYX8',
+                    icon: hotelIcon
+                },
+                {
+                    lat: -3.7630502, lon: -38.4858909,
+                    label: 'Ibis Fortaleza Centro de Eventos',
+                    url: 'https://maps.app.goo.gl/MB8sChLPhvFLjWSV9',
+                    icon: hotelIcon
+                },
+                {
+                    lat: -3.7266255, lon: -38.4986645,
+                    label: 'Mercure Fortaleza Meireles',
+                    url: 'https://maps.app.goo.gl/w2a6yaLT3y6AQJQ27',
+                    icon: hotelIcon
+                }
+            ];
+
+            const bounds = [];
+            places.forEach(function (place) {
+                bounds.push([place.lat, place.lon]);
+                L.marker([place.lat, place.lon], { icon: place.icon })
+                    .addTo(map)
+                    .bindPopup('<b>' + place.label + '</b><br><a href="' + place.url + '" target="_blank" style="color:#2b3692;font-weight:600;">Abrir no Google Maps</a>');
+            });
+            map.fitBounds(bounds, { padding: [40, 40] });
+        })();
+    </script>
 
     <!-- Patrocínio Section -->
     <section id="patrocinadores" class="pt-20 pb-10" style="background-color: #fff8e5;">
