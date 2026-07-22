@@ -6,6 +6,32 @@ mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
 });
 
+// "Evento" dropdown: open by click/keyboard too (complements the CSS hover)
+const eventoDropdown = document.querySelector('.dropdown-container');
+if (eventoDropdown) {
+    const eventoBtn = eventoDropdown.querySelector('#evento-btn');
+
+    eventoBtn.addEventListener('click', () => {
+        const isOpen = eventoDropdown.classList.toggle('dropdown-open');
+        eventoBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close when clicking anywhere outside the toggle button (incl. menu items)
+    document.addEventListener('click', (e) => {
+        if (!eventoBtn.contains(e.target)) {
+            eventoDropdown.classList.remove('dropdown-open');
+            eventoBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            eventoDropdown.classList.remove('dropdown-open');
+            eventoBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

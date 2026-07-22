@@ -41,15 +41,20 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#inicio" class="nav-link font-semibold hover:text-yellow-400 transition" style="color: #2b3692;">Início</a>
                     <div class="relative dropdown-container">
-                        <button class="nav-link font-semibold hover:text-yellow-400 transition" style="color: #2b3692;">Evento</button>
+                        <button id="evento-btn" aria-haspopup="true" aria-expanded="false" class="nav-link font-semibold hover:text-yellow-400 transition inline-flex items-center gap-1" style="color: #2b3692;">
+                            Evento
+                            <svg class="dropdown-chevron w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
                         <div class="dropdown-menu absolute hidden shadow-lg rounded-md mt-2 py-2 w-48" style="background-color: rgba(43, 54, 146, 0.95);">
                             <a href="https://ingressos.python.org.br/nordeste/2026/" target="_blank" class="block px-4 py-2 hover:bg-opacity-80 font-semibold" style="color: #80b80c;">Ingressos</a>
                             <a href="#locais" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Locais</a>
                             <a href="#cidade" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Cidade</a>
                             <a href="#sobre" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Sobre o Evento</a>
-                            <a href="#patrocinadores" class="block px-4 py-2 hover:bg-opacity-80" style="color: #fff8e5;">Patrocínio</a>
                         </div>
                     </div>
+                    <a href="#patrocinadores" class="nav-link font-semibold hover:text-yellow-400 transition" style="color: #2b3692;">Patrocínio</a>
                     <a href="faq.html" class="nav-link font-semibold hover:text-yellow-400 transition" style="color: #2b3692;">Perguntas Frequentes</a>
                     <a href="codigo-conduta.html" class="nav-link font-semibold hover:text-yellow-400 transition" style="color: #2b3692;">Código de Conduta</a>
                 </div>
