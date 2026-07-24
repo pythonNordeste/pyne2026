@@ -45,6 +45,51 @@ section {
     }
 }
 
+/* Hero background: crossfading photo slideshow */
+#inicio {
+    background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-green) 100%); /* fallback */
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('assets/imgs-pyne/54622059275_da6ddbbb4d_b.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-slide--2 {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/imgs-pyne/54621952849_2b2c830506_b.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: heroCrossfade 16s ease-in-out infinite;
+}
+
+@keyframes heroCrossfade {
+    0%, 42% { opacity: 0; }
+    50%, 92% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Dark overlay so the logo/text stay legible over the photos */
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(43, 54, 146, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide--2 {
+        animation: none;
+        opacity: 0;
+    }
+}
+
 .dropdown-container:hover .dropdown-menu {
     display: block;
 }
@@ -74,24 +119,24 @@ section {
     background-color: var(--color-yellow);
 }
 
-/* Navbar scroll effect */
+/* Navbar: solid background by default for consistent legibility */
 nav {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-nav.scrolled {
-    background-color: var(--color-blue) !important;
+    background-color: var(--color-blue);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-nav.scrolled .nav-link {
-    color: var(--color-cream) !important;
+.nav-link {
+    color: var(--color-cream);
 }
 
-nav.scrolled .nav-link:hover {
-    color: var(--color-yellow) !important;
+.nav-link--active {
+    color: var(--color-green);
 }
 
-nav.scrolled #mobile-menu-btn {
-    color: var(--color-cream) !important;
+.nav-link:hover {
+    color: var(--color-yellow);
+}
+
+#mobile-menu-btn {
+    color: var(--color-cream);
 }
