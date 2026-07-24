@@ -129,24 +129,24 @@ section {
     background-color: var(--color-yellow);
 }
 
-/* Navbar scroll effect */
+/* Navbar: solid background by default for consistent legibility */
 nav {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-nav.scrolled {
-    background-color: var(--color-blue) !important;
+    background-color: var(--color-blue);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-nav.scrolled .nav-link {
-    color: var(--color-cream) !important;
+.nav-link {
+    color: var(--color-cream);
 }
 
-nav.scrolled .nav-link:hover {
-    color: var(--color-yellow) !important;
+.nav-link--active {
+    color: var(--color-green);
 }
 
-nav.scrolled #mobile-menu-btn {
-    color: var(--color-cream) !important;
+.nav-link:hover {
+    color: var(--color-yellow);
+}
+
+#mobile-menu-btn {
+    color: var(--color-cream);
 }

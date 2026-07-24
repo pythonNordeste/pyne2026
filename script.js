@@ -48,20 +48,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-const inicioSection = document.getElementById('inicio');
-
-window.addEventListener('scroll', () => {
-    const inicioBottom = inicioSection.offsetTop + inicioSection.offsetHeight;
-
-    if (window.scrollY > inicioBottom - 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
 // Optional: Auto-scroll carousel
 const carousel = document.querySelector('.carousel');
 let isScrolling = false;
@@ -80,9 +66,9 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             navLinks.forEach(link => {
-                link.classList.remove('text-blue-600');
+                link.classList.remove('nav-link--active');
                 if (link.getAttribute('href') === `#${entry.target.id}`) {
-                    link.classList.add('text-blue-600');
+                    link.classList.add('nav-link--active');
                 }
             });
         }
