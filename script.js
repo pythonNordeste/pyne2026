@@ -136,3 +136,85 @@ sections.forEach(section => {
     });
     map.fitBounds(bounds, { padding: [40, 40] });
 })();
+
+// Painel de Vagas
+// Cada vaga em jobs.json tem o formato:
+// { company, logo, role, location, tags?, summary, description, applyUrl }
+(function () {
+    const container = document.getElementById('jobs-container');
+    const emptyState = document.getElementById('jobs-empty');
+    if (!container) return;
+
+    const modal = document.getElementById('job-modal');
+    const modalLogo = document.getElementById('job-modal-logo');
+    const modalRole = document.getElementById('job-modal-role');
+    const modalCompany = document.getElementById('job-modal-company');
+    const modalLocation = document.getElementById('job-modal-location');
+    const modalDescription = document.getElementById('job-modal-description');
+    const modalApply = document.getElementById('job-modal-apply');
+    const modalClose = document.getElementById('job-modal-close');
+
+    function openModal(job) {
+        modalLogo.src = job.logo || '';
+        modalLogo.alt = job.company || '';
+        modalRole.textContent = job.role || '';
+        modalCompany.textContent = job.company || '';
+        modalLocation.textContent = job.location || '';
+        modalDescription.textContent = job.description || job.summary || '';
+        modalApply.href = job.applyUrl || '#';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    if (modal) {
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    }
+
+    function renderJob(job) {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'text-left rounded-lg shadow-md p-6 bg-white hover:shadow-xl transition flex flex-col gap-3';
+        card.innerHTML = `
+            <div class="flex items-center gap-4">
+                <img src="${job.logo || ''}" alt="${job.company || ''}" class="w-12 h-12 object-contain" />
+                <div>
+                    <h3 class="text-lg font-bold" style="color: #2b3692;">${job.role || ''}</h3>
+                    <p class="text-sm" style="color: #333;">${job.company || ''}</p>
+                </div>
+            </div>
+            ${job.location ? `<p class="text-sm" style="color: #666;">${job.location}</p>` : ''}
+            ${job.summary ? `<p class="text-sm" style="color: #333;">${job.summary}</p>` : ''}
+            <span class="text-sm font-semibold mt-auto" style="color: #80b80c;">Ver detalhes →</span>
+        `;
+        card.addEventListener('click', () => openModal(job));
+        container.appendChild(card);
+    }
+
+    fetch('jobs.json', { cache: 'no-cache' })
+        .then((res) => {
+            if (!res.ok) throw new Error('Falha ao carregar jobs.json: ' + res.status);
+            return res.json();
+        })
+        .then((jobs) => {
+            if (!Array.isArray(jobs) || jobs.length === 0) {
+                if (emptyState) emptyState.classList.remove('hidden');
+                return;
+            }
+            jobs.forEach(renderJob);
+        })
+        .catch((err) => {
+            console.error(err);
+            if (emptyState) emptyState.classList.remove('hidden');
+        });
+})();
