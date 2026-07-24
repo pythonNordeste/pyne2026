@@ -90,8 +90,18 @@ section {
     }
 }
 
-.dropdown-container:hover .dropdown-menu {
+.dropdown-container:hover .dropdown-menu,
+.dropdown-container.dropdown-open .dropdown-menu {
     display: block;
+}
+
+.dropdown-chevron {
+    transition: transform 0.2s ease;
+}
+
+.dropdown-container:hover .dropdown-chevron,
+.dropdown-container.dropdown-open .dropdown-chevron {
+    transform: rotate(180deg);
 }
 
 .dropdown-menu::before {
