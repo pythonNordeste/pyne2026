@@ -80,8 +80,11 @@
     </nav>
 
     <!-- Hero Section - Início -->
-    <section id="inicio" class="min-h-screen flex items-center justify-center pt-20" style="background: linear-gradient(135deg, #2b3692 0%, #80b80c 100%);">
-        <div class="container mx-auto px-6 text-center">
+    <section id="inicio" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <div class="hero-bg" aria-hidden="true">
+            <div class="hero-slide--2"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
             <img src="assets/Logo-Fortaleza.svg" alt="Logo Fortaleza Python Nordeste" class="h-72 md:h-80 lg:h-96 mx-auto mb-8">
             <div class="text-center">
                 <p class="text-xl font-medium" style="color: #f7aa1c;">
@@ -222,8 +225,12 @@
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold mb-4" style="color: #2b3692;">Nossos Patrocinadores</h2>
             <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                <img src="assets/imgs-patrocinadores/vinta.png" alt="Vinta Software" class="w-[300px]" />
-                <img src="assets/imgs-patrocinadores/Labcodes-Logo.png" alt="Labcodes" class="w-[300px]" />
+                <a href="https://www.vintasoftware.com/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
+                    <img src="assets/imgs-patrocinadores/vinta.png" alt="Vinta Software" class="w-[300px]" />
+                </a>
+                <a href="https://labcodes.com.br/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
+                    <img src="assets/imgs-patrocinadores/Labcodes-Logo.png" alt="Labcodes" class="w-[300px]" />
+                </a>
             </div>
         </div>
         <div class="container mx-auto px-6 text-center mt-8">
@@ -248,8 +255,12 @@
         <div class="container mx-auto px-6 text-center py-10">
             <h3 class="text-4xl font-bold mb-6" style="color: #2b3692;">Apoio</h2>
             <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                <img src="assets/imgs-patrocinadores/psf.png" alt="Python Software Foundation" class="w-[150px]">
-                <img src="assets/imgs-patrocinadores/logo-estacio.png" alt="Estácio" class="w-[150px]">
+                <a href="https://www.python.org/psf/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
+                    <img src="assets/imgs-patrocinadores/psf.png" alt="Python Software Foundation" class="w-[150px]">
+                </a>
+                <a href="https://estacio.br/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
+                    <img src="assets/imgs-patrocinadores/logo-estacio.png" alt="Estácio" class="w-[150px]">
+                </a>
             </div>
         </div>
     </section>
