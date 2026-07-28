@@ -112,6 +112,34 @@
         </div>
     </section>
 
+    <!-- Sobre o Evento Section -->
+    <section id="sobre" class="py-20" style="background-color: #fff8e5;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center" style="color: #2b3692;">Sobre o Evento</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="leading-relaxed text-lg" style="color: #333;">
+                        A Python Nordeste é um evento de tecnologia, realizado anualmente desde 2013, organizado por
+                        entusiastas da linguagem de programação Python da região Nordeste do Brasil. Como um evento sem
+                        fins lucrativos, ele é planejado e conduzido de forma colaborativa pela comunidade, com o objetivo
+                        de promover o aprendizado, o compartilhamento de conhecimento e o fortalecimento de laços entre os
+                        participantes.
+                    </p>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
+                        <div class="carousel-item min-w-full snap-center">
+                            <img src="assets/imgs-pyne/54621951939_bf58fc4624_c.jpg" alt="Teatro José Alencar" class="w-full h-80 object-cover rounded-lg shadow-lg">
+                        </div>
+                        <div class="carousel-item min-w-full snap-center">
+                            <img src="assets/imgs-pyne/54460465871_05979e21a6_c.jpg" alt="Praia de Fortaleza" class="w-full h-80 object-cover rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Cidade Section -->
     <section id="cidade" class="py-20" style="background-color: #fff8e5;">
         <div class="container mx-auto px-6">
@@ -143,34 +171,6 @@
                         </div>
                         <div class="carousel-item min-w-full snap-center">
                             <img src="assets/imgs-cidade/40209529135_8ae9531c30_o.jpg" alt="Praia do Meireles" class="w-full h-80 object-cover rounded-lg shadow-lg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre o Evento Section -->
-    <section id="sobre" class="py-20" style="background-color: #fff8e5;">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-12 text-center" style="color: #2b3692;">Sobre o Evento</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <p class="leading-relaxed text-lg" style="color: #333;">
-                        A Python Nordeste é um evento de tecnologia, realizado anualmente desde 2013, organizado por
-                        entusiastas da linguagem de programação Python da região Nordeste do Brasil. Como um evento sem
-                        fins lucrativos, ele é planejado e conduzido de forma colaborativa pela comunidade, com o objetivo
-                        de promover o aprendizado, o compartilhamento de conhecimento e o fortalecimento de laços entre os
-                        participantes.
-                    </p>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
-                        <div class="carousel-item min-w-full snap-center">
-                            <img src="assets/imgs-pyne/54621951939_bf58fc4624_c.jpg" alt="Teatro José Alencar" class="w-full h-80 object-cover rounded-lg shadow-lg">
-                        </div>
-                        <div class="carousel-item min-w-full snap-center">
-                            <img src="assets/imgs-pyne/54460465871_05979e21a6_c.jpg" alt="Praia de Fortaleza" class="w-full h-80 object-cover rounded-lg shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,36 @@
                 </a>
             </div>
         </div>
-        <div class="container mx-auto px-6 text-center mt-8">
+    </section>
+
+    <!-- Painel de Vagas -->
+    <section id="vagas" class="pt-20 pb-16" style="background-color: #fff8e5;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-4 text-center" style="color: #2b3692;">Painel de Vagas</h2>
+            <p class="text-xl mb-12 max-w-3xl mx-auto text-center" style="color: #333;">
+                Vagas divulgadas pelas empresas patrocinadoras do evento.
+            </p>
+
+            <!-- Cards de vagas (preenchidos via script.js a partir de jobs.json) -->
+            <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <!-- Estado vazio -->
+            <p id="jobs-empty" class="hidden text-center text-lg" style="color: #333;">
+                Nenhuma vaga no momento. Em breve!
+            </p>
+
+            <!-- CTA para patrocinadores -->
+            <div class="text-center mt-12">
+                <a href="#patrocine" class="px-8 py-4 rounded-lg transition font-semibold inline-flex items-center justify-center" style="background-color: #2b3692; color: #fff8e5;" onmouseover="this.style.backgroundColor='#da3724'" onmouseout="this.style.backgroundColor='#2b3692'">
+                    Seja um patrocinador
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patrocine o Evento -->
+    <section id="patrocine" class="pt-10 pb-20" style="background-color: #fff8e5;">
+        <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold mb-4" style="color: #2b3692;">Patrocine o Evento</h2>
             <p class="text-xl mb-12 max-w-3xl mx-auto" style="color: #333;">
                 Apoie a comunidade Python Nordeste e impulsione sua marca. Veja nossos planos de patrocínio.
@@ -262,32 +291,6 @@
                 </a>
                 <a href="https://estacio.br/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
                     <img src="assets/imgs-patrocinadores/logo-estacio.png" alt="Estácio" class="w-[150px]">
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Painel de Vagas -->
-    <section id="vagas" class="pt-20 pb-16" style="background-color: #fff8e5;">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-4 text-center" style="color: #2b3692;">Painel de Vagas</h2>
-            <p class="text-xl mb-12 max-w-3xl mx-auto text-center" style="color: #333;">
-                Vagas divulgadas pelas empresas patrocinadoras do evento.
-            </p>
-
-            <!-- Cards de vagas (preenchidos via script.js a partir de jobs.json) -->
-            <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-            <!-- Estado vazio -->
-            <p id="jobs-empty" class="hidden text-center text-lg" style="color: #333;">
-                Nenhuma vaga no momento. Em breve!
-            </p>
-
-            <!-- CTA para patrocinadores -->
-            <div class="text-center mt-12">
-                <p class="text-lg mb-4" style="color: #333;">Quer divulgar uma vaga? O painel é um benefício para patrocinadores.</p>
-                <a href="#patrocinadores" class="px-8 py-4 rounded-lg transition font-semibold inline-flex items-center justify-center" style="background-color: #2b3692; color: #fff8e5;" onmouseover="this.style.backgroundColor='#da3724'" onmouseout="this.style.backgroundColor='#2b3692'">
-                    Seja um patrocinador
                 </a>
             </div>
         </div>
