@@ -97,6 +97,7 @@ const NAVBAR_HTML = `
                 </div>
                 <a href="#patrocinadores" class="nav-link font-semibold hover:text-yellow-400 transition">Patrocínio</a>
                 <a href="#vagas" class="nav-link font-semibold hover:text-yellow-400 transition">Vagas</a>
+                <a href="agenda.html" class="nav-link font-semibold hover:text-yellow-400 transition">Agenda</a>
                 <a href="faq.html" class="nav-link font-semibold hover:text-yellow-400 transition">Perguntas Frequentes</a>
                 <a href="codigo-conduta.html" class="nav-link font-semibold hover:text-yellow-400 transition">Código de Conduta</a>
             </div>
@@ -115,6 +116,7 @@ const NAVBAR_HTML = `
             <a href="#sobre" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Sobre o Evento</a>
             <a href="#patrocinadores" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Patrocínio</a>
             <a href="#vagas" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Vagas</a>
+            <a href="agenda.html" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Agenda</a>
             <a href="https://ingressos.python.org.br/nordeste/2026/" target="_blank" class="block py-2 hover:text-yellow-300 font-semibold" style="color: #80b80c;">Ingressos</a>
             <a href="faq.html" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Perguntas Frequentes</a>
             <a href="codigo-conduta.html" class="block py-2 hover:text-yellow-300" style="color: #fff8e5;">Código de Conduta</a>
