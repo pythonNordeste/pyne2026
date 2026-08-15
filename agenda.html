@@ -103,10 +103,25 @@
                 wrap.appendChild(w);
             }
 
+            // Dia de hoje no fuso do navegador (não em UTC, que viraria o dia às 21h em Fortaleza).
+            function today() {
+                const d = new Date();
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+                const dd = String(d.getDate()).padStart(2, '0');
+                return d.getFullYear() + '-' + mm + '-' + dd;
+            }
+
+            // Durante o evento abre no dia atual; fora dele, no primeiro dia.
+            function initialButton() {
+                const now = today();
+                return buttons.filter(function (b) { return b.dataset.date === now; })[0] || buttons[0];
+            }
+
             buttons.forEach(function (b) {
                 b.addEventListener('click', function () { render(b.dataset.date, b); });
             });
-            render(buttons[0].dataset.date, buttons[0]);
+            const first = initialButton();
+            render(first.dataset.date, first);
         })();
     </script>
 </body>
